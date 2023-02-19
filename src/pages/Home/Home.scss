@@ -1,0 +1,326 @@
+@import '../../styles/colors.scss';
+
+$navbar-height: 20vh;
+$padding-h: 15%;
+
+.undraggable {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  pointer-events: none;
+}
+
+.unselectable {
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+}
+
+#home {
+  background-color: $bossanova;
+  display: block;
+  font-size: 12px;
+}
+
+.header {
+  box-sizing: border-box;
+  padding: 0 $padding-h;
+  position: sticky;
+  width: 100%;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: $navbar-height;
+  width: 100%;
+  backdrop-filter: blur(10px);
+}
+
+.navbar__brand {
+  @extend .unselectable;
+  align-items: center;
+  color: $white;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Poppins';
+  font-size: 2.5em;
+  font-weight: 800;
+  justify-content: flex-start;
+}
+
+.navbar__menu {
+  align-items: flex-end;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.menu__bar {
+  background-color: white;
+  display: block;
+  height: .4em;
+  transition: ease-in .2s;
+  width: 3em;
+}
+
+.menu__bar:nth-child(2), .menu__bar:nth-child(3) {
+  margin-top: .5em;
+}
+
+.ham:hover > .menu__bar:nth-child(2) {
+  width: 1.5em;
+}
+
+.navbar__menu ul li{
+  display: inline-block;
+  list-style: none;
+  padding: 5px;
+}
+
+//HOME WELCOME
+
+#home-welcome {
+  background-image: url('../../assets/astro-infinite-stars.png');
+  background-size: cover;
+  box-sizing: border-box;
+  display: flex;
+  font-family: 'Poppins';
+  height: calc(100vh - $navbar-height);
+  padding: 0 15%;
+  width: 100%;
+}
+
+.menu {
+  cursor: pointer;
+  color: $white;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  width: 18%;
+  z-index: 1;
+}
+
+.menu nav {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1em;
+  gap: 10px;
+  height: 80%;
+  justify-content: center;
+}
+
+.menu nav .active {
+  font-weight: 700;
+}
+
+.menu__option {
+  @extend .unselectable;
+  font-family: 'Poppins';
+  font-weight: 200;
+  margin: 2em 0;
+  transform: rotate(-90deg);
+}
+
+.menu__option:hover {
+  filter: drop-shadow(0 0 1em $white);
+}
+
+.menu__circle {
+  background-color: $white;
+  border-radius: 100px;
+  display: block;
+  height: 2em;
+  width: 2em;
+}
+
+.menu__divider {
+  background-color: $white;
+  display: block;
+  width: .1em;
+  height: 4em;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.content__hero {
+  align-items: center;
+  background-color: rgba($bossanova, 0.9);
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1em;
+  gap: 4em;
+  grid-column: 1 / span 1;
+  justify-content: center;
+}
+
+.content__hero p {
+  font-size: 3em;
+  font-weight: 800;
+  text-align: center;
+}
+
+.content__hero p span {
+  color: $roti; 
+}
+
+.hero__button {
+  @extend .unselectable;
+  border-radius: 50px;
+  border: 1px solid $roti;
+  color: $roti;
+  cursor: pointer;
+  display: block;
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: .1em;
+  padding: .8em 2.2em;
+  transition: ease-in-out .2s;
+}
+
+.hero__button:hover {
+  background-color: $roti;
+  color: $white;
+}
+
+.content__banner {
+  @extend .unselectable;
+  @extend .undraggable;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-height: calc(100vh - $navbar-height);
+  position: relative;
+}
+
+.content__banner img {
+  object-fit: cover;
+  filter: drop-shadow(0 0 .4em $roti);
+  width: 85%;
+  //animation: glowing 3s infinite;
+}
+
+@keyframes glowing {
+  0% {
+    filter: drop-shadow(0 0 0em $roti);
+  }
+  50% {
+    filter: drop-shadow(0 0 .4em $roti);
+  }
+  100% {
+    filter: drop-shadow(0 0 0 $roti);
+  }
+}
+
+// Divider Welcome / Features
+
+#divider-welcome-features {
+  background: linear-gradient(180deg, rgba($bossanova, 1) 0%, rgba($rhino, 1) 100%);
+  width: 100%;
+  height: 20vh;
+}
+
+// Home Features
+
+#home-features {
+  position: relative;
+  //background: linear-gradient(180deg, rgba($bossanova, 1) 0%, rgba($rhino, 1) 25%, rgba($rhino, 1) 100%);
+  background: $rhino;
+  background-size: cover;
+  height: 120vh;
+  z-index: 0;
+}
+
+//#home-features::after {
+#home-features::before {
+  content: '';
+  top: 0;
+  left: 0;
+  background: url('../../assets/astro-infinite-stars-white.png') center center no-repeat;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  z-index: -1;
+}
+
+.features__content {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  height: 100%;
+  padding: 0 15%;
+  width: 100%;
+}
+
+.features__title {
+  align-items: center;
+  display: flex;
+  grid-column: 1 / span 12;
+  grid-row: 2 / span 1;
+}
+
+.features__title h1 {
+  color: $white;
+  font-size: 4em;
+  font-family: 'Poppins';
+}
+
+.features__image {
+  @extend .unselectable;
+  grid-column: 1 / span 4;
+  grid-row: 3 / span 4;
+}
+
+#capricorn {
+  object-fit: cover;
+  width: 100%;
+}
+
+.features__list {
+  background-color: rgba($rhino, 0.4);
+  //backdrop-filter: blur(10px);
+  grid-column: 5 / span 4;
+  grid-row: 3 / span 4;
+}
+
+.features__list ul {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  justify-content: center;
+  list-style: none;
+}
+
+.features__list li {
+  @extend .unselectable;
+  background-color: $alto;
+  border-radius: 16px;
+  color: $rhino;
+  cursor: pointer;
+  font-family: 'Poppins';
+  font-size: large;
+  font-weight: 600;
+  padding: 1.4em .4em;
+  text-align: center;
+  width: 80%;
+}
+
+.features__list li:hover {
+  background-color: $rhino;
+  color: $white;
+  filter: drop-shadow(0 0em .2em $white);
+  transition: ease-in-out .2s;
+}
